@@ -5,7 +5,6 @@ import { connect } from 'react-redux';
 import { Container, Alert, Button, FormGroup, Label, InputGroup, InputGroupAddon, Input, InputGroupText } from 'reactstrap';
 import Widget from '../../components/Widget';
 import { loginUser } from '../../actions/user';
-import microsoft from '../../assets/microsoft.png';
 
 class Login extends React.Component {
     static propTypes = {
@@ -20,8 +19,8 @@ class Login extends React.Component {
         super(props);
 
         this.state = {
-            email: 'admin@flatlogic.com',
-            password: 'password',
+            email: 'admin@cognitodemo.com',
+            password: 'reset@123',
         };
 
         this.doLogin = this.doLogin.bind(this);
@@ -113,9 +112,6 @@ class Login extends React.Component {
                         </form>
                     </Widget>
                 </Container>
-                {/* <footer className="auth-footer">
-                {new Date().getFullYear()} &copy; Light Blue Template - React Admin Dashboard Template Made by <a href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic LLC</a>.
-                </footer> */}
             </div>
         );
     }

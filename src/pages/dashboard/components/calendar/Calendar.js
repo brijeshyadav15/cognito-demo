@@ -30,13 +30,6 @@ class Calendar extends Component {
           itemStyle: "#2d8515",
           date: moment(`${moment().year()}-${moment().month()+1}-18`, "YYYY-MM-DD"),
         },
-        {
-          title: "A link",
-          info: "",
-          itemStyle: "#f45722",
-          link: "http://www.flatlogic.com",
-          date: moment(`${moment().year()}-${moment().month()+1}-29`, "YYYY-MM-DD"),
-        },
       ],
       showEvents: false
     };

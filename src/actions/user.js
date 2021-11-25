@@ -1,3 +1,4 @@
+import { Auth } from "aws-amplify";
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
@@ -39,13 +40,18 @@ export function logoutUser() {
 
 export function loginUser(creds) {
     return (dispatch) => {
+        Auth.signIn({
+            username: creds.email,
+            password:creds.password,
+          })
+            .then((user) => {
+                dispatch(receiveLogin());
+                localStorage.setItem('authenticated', true)
+            })
+            .catch((err) => {
+              console.log(err);
+              dispatch(loginError('Something was wrong. Try again'));
+            });
 
-        dispatch(receiveLogin());
-
-        if (creds.email.length > 0 && creds.password.length > 0) {
-            localStorage.setItem('authenticated', true)
-        } else {
-            dispatch(loginError('Something was wrong. Try again'));
-        }
     }
 }

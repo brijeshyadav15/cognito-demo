@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Switch, Route, Redirect } from 'react-router';
 import { HashRouter } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
+import Amplify from "aws-amplify";
 
 /* eslint-disable */
 import ErrorPage from '../pages/error';
@@ -28,6 +29,15 @@ const PrivateRoute = ({dispatch, component, ...rest }) => {
 const CloseButton = ({closeToast}) => <i onClick={closeToast} className="la la-close notifications-close"/>
 
 class App extends React.PureComponent {
+    componentDidMount(){
+        Amplify.configure({
+            Auth: {
+              region: process.env.AWS_APP_REGION,
+              userPoolId: process.env.AWS_APP_USER_POOL_ID,
+              userPoolWebClientId: process.env.AWS_APP_USER_POOL_WEB_CLIENT_ID,
+            },
+          });
+    }
   render() {
     return (
         <div>
